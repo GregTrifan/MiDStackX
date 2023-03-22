@@ -10,18 +10,15 @@
     ],
     "private": true,
     "scripts": {
-        "react-app:build": "yarn workspace @midstackx/react-app build --max-old-space-size=12288",
-        "react-app:eject": "yarn workspace @midstackx/react-app eject",
-        "react-app:start": "yarn workspace @midstackx/react-app start",
-        "react-app:test": "yarn workspace @midstackx/react-app test",
-        "react-app:lint": "yarn workspace @midstackx/react-app lint",
-        "build": "yarn workspace @midstackx/react-app build --max-old-space-size=12288",
-        "prettier": "yarn workspace @midstackx/react-app prettier",
+        "frontend:build": "yarn workspace @midstackx/frontend build --max-old-space-size=12288",
+        "frontend:start": "yarn workspace @midstackx/frontend start",
+        "frontend:lint": "yarn workspace @midstackx/frontend lint",
+        "build": "yarn workspace @midstackx/frontend build --max-old-space-size=12288",
         "chain": "yarn workspace @midstackx/hardhat chain",
         "fork": "yarn workspace @midstackx/hardhat fork",
         "node": "yarn workspace @midstackx/hardhat chain",
         "test": "yarn workspace @midstackx/hardhat test",
-        "start": "yarn workspace @midstackx/react-app start",
+        "start": "yarn workspace @midstackx/frontend dev",
         "compile": "yarn workspace @midstackx/hardhat compile",
         "deploy": "yarn workspace @midstackx/hardhat deploy",
         "verify": "yarn workspace @midstackx/hardhat verify",
@@ -29,10 +26,6 @@
         "accounts": "yarn workspace @midstackx/hardhat accounts",
         "balance": "yarn workspace @midstackx/hardhat balance",
         "send": "yarn workspace @midstackx/hardhat send",
-        "ipfs": "yarn workspace @midstackx/react-app ipfs",
-        "surge": "yarn workspace @midstackx/react-app surge",
-        "s3": "yarn workspace @midstackx/react-app s3",
-        "ship": "yarn workspace @midstackx/react-app ship",
         "generate": "yarn workspace @midstackx/hardhat generate",
         "account": "yarn workspace @midstackx/hardhat account",
         "mineContractAddress": "cd packages/hardhat && npx hardhat mineContractAddress",
@@ -50,8 +43,6 @@
         "graph-deploy-local": "yarn workspace @midstackx/subgraph graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 scaffold-eth/your-contract",
         "graph-ship-local": "yarn graph-codegen && yarn graph-build --network localhost && yarn graph-deploy-local",
         "deploy-and-graph": "yarn deploy && yarn graph-ship-local",
-        "theme": "yarn workspace @midstackx/react-app theme",
-        "watch-theme": "yarn workspace @midstackx/react-app watch",
         "postinstall": "husky install",
         "prepare": "husky install"
     },
@@ -74,7 +65,7 @@
         "lint-staged": "^13.0.3"
     },
     "lint-staged": {
-        "packages/react-app/src/**/*.{js,jsx}": [
+        "packages/frontend/**/*.{js,jsx}": [
             "prettier --write",
             "eslint --fix"
         ]
