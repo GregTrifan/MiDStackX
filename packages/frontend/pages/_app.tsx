@@ -3,6 +3,8 @@ import { NextUIProvider, createTheme } from '@nextui-org/react'
 import AppHeader from '@/components/appHeader'
 import { Box } from '@/components/primitives/box'
 import '@rainbow-me/rainbowkit/styles.css';
+import "@uiw/react-md-editor/markdown-editor.css";
+import "@uiw/react-markdown-preview/markdown.css";
 import {
     getDefaultWallets,
     darkTheme,
@@ -34,12 +36,17 @@ const wagmiClient = createClient({
     provider
 })
 const theme = createTheme({
-    type: 'dark'
+    type: 'dark',
+    theme: {
+        colors: {
+            primary: "#0023FF"
+        }
+    }
 })
 export default function App({ Component, pageProps }: AppProps) {
     return (
         <WagmiConfig client={wagmiClient}>
-            <RainbowKitProvider chains={chains} theme={darkTheme()}>
+            <RainbowKitProvider chains={chains} theme={darkTheme({ accentColor: "#0023FF" })}>
                 <NextUIProvider theme={theme}>
                     <Box css={{ maxWidth: "100%" }}>
                         <AppHeader />

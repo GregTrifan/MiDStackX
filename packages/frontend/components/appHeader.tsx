@@ -4,31 +4,29 @@ import Image from "next/image";
 import { Box } from "./primitives/box";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 const AppHeader = () => {
-    const collapseItems = [
-        "Features",
-        "Customers",
-        "Pricing",
-        "Company",
-        "Legal",
-        "Team",
-        "Help & Feedback",
-        "Login",
-        "Sign Up",
+    const LinkItems: { label: string, link: string }[] = [
+        {
+            label: "Create Post",
+            link: "/upload"
+        },
+        {
+            label: "Profile",
+            link: "/profile"
+        },
     ];
 
     return (
         <Navbar isBordered variant="sticky" maxWidth="fluid">
             <Navbar.Brand>
-                <Navbar.Toggle aria-label="toggle navigation" />
-                <Image src="/logo.png" alt="MIDSTACKX" width={200} height={25} style={{ marginLeft: "1rem" }} />
+                <Navbar.Toggle aria-label="toggle navigation" css={{ "@sm": { display: "none" } }} />
+                <Image src="/logo.png" alt="MIDSTACKX" width={150} height={18.5} style={{ marginLeft: "0.5rem" }} />
             </Navbar.Brand>
-            <Navbar.Content enableCursorHighlight hideIn="xs" variant="underline">
-                <Navbar.Link href="#">Features</Navbar.Link>
-                <Navbar.Link isActive href="#">
-                    Customers
-                </Navbar.Link>
-                <Navbar.Link href="#">Pricing</Navbar.Link>
-                <Navbar.Link href="#">Company</Navbar.Link>
+            <Navbar.Content enableCursorHighlight hideIn={"sm"} variant="underline">
+                {LinkItems.map((item, index) => (
+                    <Navbar.Link href={item.link} key={index}>
+                        {item.label}
+                    </Navbar.Link>
+                ))}
             </Navbar.Content>
             <Navbar.Content>
                 <ConnectButton accountStatus={{
@@ -37,16 +35,16 @@ const AppHeader = () => {
                 }} />
             </Navbar.Content>
             <Navbar.Collapse>
-                {collapseItems.map((item, index) => (
-                    <Navbar.CollapseItem key={item}>
+                {LinkItems.map((item, index) => (
+                    <Navbar.CollapseItem key={index}>
                         <Link
                             color="inherit"
                             css={{
                                 minWidth: "100%",
                             }}
-                            href="#"
+                            href={item.link}
                         >
-                            {item}
+                            {item.label}
                         </Link>
                     </Navbar.CollapseItem>
                 ))}
