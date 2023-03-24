@@ -5,6 +5,7 @@ import { Box } from '@/components/primitives/box'
 import '@rainbow-me/rainbowkit/styles.css';
 import "@uiw/react-md-editor/markdown-editor.css";
 import "@uiw/react-markdown-preview/markdown.css";
+import "@/index.css"
 import {
     getDefaultWallets,
     darkTheme,
@@ -39,14 +40,17 @@ const theme = createTheme({
     type: 'dark',
     theme: {
         colors: {
-            primary: "#0023FF"
+            primary: "#0023FF",
+            selection: "#ff6bd546"
         }
     }
 })
 export default function App({ Component, pageProps }: AppProps) {
     return (
         <WagmiConfig client={wagmiClient}>
-            <RainbowKitProvider chains={chains} theme={darkTheme({ accentColor: "#0023FF" })}>
+            <RainbowKitProvider chains={chains} theme={darkTheme({
+                accentColor: "#0023FF"
+            })}>
                 <NextUIProvider theme={theme}>
                     <Box css={{ maxWidth: "100%" }}>
                         <AppHeader />

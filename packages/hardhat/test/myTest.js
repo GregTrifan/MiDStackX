@@ -1,37 +1,30 @@
 const { ethers } = require("hardhat");
 const { expect } = require("chai");
 
-describe("My Dapp", function () {
-  let myContract;
+describe("My Dapp", function() {
+  let stackXOwner;
 
   // quick fix to let gas reporter fetch data from gas station & coinmarketcap
-  before((done) => {
+  before(done => {
     setTimeout(done, 2000);
   });
 
-  describe("YourContract", function () {
-    it("Should deploy YourContract", async function () {
-      const YourContract = await ethers.getContractFactory("YourContract");
+  describe("StackXOwner", function() {
+    it("Should deploy StackXOwner", async function() {
+      const StackXOwner = await ethers.getContractFactory("StackXOwner");
 
-      myContract = await YourContract.deploy();
+      stackXOwner = await StackXOwner.deploy();
     });
 
-    describe("setPurpose()", function () {
-      it("Should be able to set a new purpose", async function () {
-        const newPurpose = "Test Purpose";
+    describe("Minting", function() {
+      it("Should be able to mint", async function() {
+        const [creator, fan] = await ethers.getSigners();
 
-        await myContract.setPurpose(newPurpose);
-        expect(await myContract.purpose()).to.equal(newPurpose);
-      });
-
-      it("Should emit a SetPurpose event ", async function () {
-        const [owner] = await ethers.getSigners();
-
-        const newPurpose = "Another Test Purpose";
-
-        expect(await myContract.setPurpose(newPurpose))
-          .to.emit(myContract, "SetPurpose")
-          .withArgs(owner.address, newPurpose);
+        await stackXOwner.connect(fan).mint(creator.address);
+        expect(await stackXOwner.getTokenAddress(1)).to.equal(creator.address);
+        expect(await stackXOwner.connect(fan).getOwnedCreators()).to.contain(
+          creator.address
+        );
       });
     });
   });
