@@ -1,7 +1,8 @@
 <div style="background-color:black; padding:20px;">
 <img src="packages/frontend/public/logo.png"/>
 </div>
-###  🏗 WIP 🏗
+
+### 🏗 WIP   🏗
 
 **MiDStackX** is a decentralized platform for publishing and accessing content built on the Ethereum blockchain. Inspired by the growing interest in NFTs, our goal is to provide creators with a new way to monetize and distribute their content. Our platform enables NFT-gated access to articles stored off-chain in IPFS, allowing users to purchase or obtain NFTs that grant them access to the corresponding articles.
 
