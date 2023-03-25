@@ -16,6 +16,7 @@ import { hardhat } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import { fireChain } from '@/utils/chainConfigs';
+import { Toaster } from 'react-hot-toast';
 
 
 const { chains, provider } = configureChains(
@@ -52,6 +53,14 @@ export default function App({ Component, pageProps }: AppProps) {
                 accentColor: "#0023FF"
             })}>
                 <NextUIProvider theme={theme}>
+                    <Toaster toastOptions={{
+                        style: {
+                            borderRadius: '10px',
+                            background: '#000',
+                            border: 'solid #ffffff3b 2px',
+                            color: '#fff',
+                        }
+                    }} />
                     <Box css={{ maxWidth: "100%" }}>
                         <AppHeader />
                         <Box css={{ mx: 4 }}>

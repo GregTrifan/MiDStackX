@@ -1,8 +1,9 @@
-import { Navbar, Button, Link, Text } from "@nextui-org/react";
+import { Navbar, Button, Link as UiLink, Text } from "@nextui-org/react";
 import React from 'react'
 import Image from "next/image";
 import { Box } from "./primitives/box";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import Link from "next/link";
 const AppHeader = () => {
     const LinkItems: { label: string, link: string }[] = [
         {
@@ -19,11 +20,13 @@ const AppHeader = () => {
         <Navbar isBordered variant="sticky" maxWidth="fluid">
             <Navbar.Brand>
                 <Navbar.Toggle aria-label="toggle navigation" css={{ "@sm": { display: "none" } }} />
-                <Image src="/logo.png" alt="MIDSTACKX" width={150} height={18.5} style={{ marginLeft: "0.5rem" }} />
+                <Link href="/" style={{ marginTop: "auto" }}>
+                    <Image src="/logo.png" alt="MIDSTACKX" width={150} height={18.5} style={{ marginLeft: "0.5rem" }} />
+                </Link>
             </Navbar.Brand>
             <Navbar.Content enableCursorHighlight hideIn={"sm"} variant="underline">
                 {LinkItems.map((item, index) => (
-                    <Navbar.Link href={item.link} key={index}>
+                    <Navbar.Link as={Link} href={item.link} key={index}>
                         {item.label}
                     </Navbar.Link>
                 ))}
@@ -37,7 +40,8 @@ const AppHeader = () => {
             <Navbar.Collapse>
                 {LinkItems.map((item, index) => (
                     <Navbar.CollapseItem key={index}>
-                        <Link
+                        <UiLink
+                            as={Link}
                             color="inherit"
                             css={{
                                 minWidth: "100%",
@@ -45,7 +49,7 @@ const AppHeader = () => {
                             href={item.link}
                         >
                             {item.label}
-                        </Link>
+                        </UiLink>
                     </Navbar.CollapseItem>
                 ))}
             </Navbar.Collapse>

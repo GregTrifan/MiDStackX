@@ -1,5 +1,7 @@
 export interface BlogPost {
-    title?: string,
-    userAddress?: string | `0x${string}`,
-    markdown?: string 
+	created_at?: string | null;
+	id?: number;
+	markdown?: string | null;
+	title?: string | null;
+	userAddress?: string | null;
 }
