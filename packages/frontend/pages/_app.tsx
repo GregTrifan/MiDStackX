@@ -20,7 +20,7 @@ import { Toaster } from 'react-hot-toast';
 
 
 const { chains, provider } = configureChains(
-    [{ ...fireChain, iconUrl: "/5ire.png" }, hardhat],
+    [{ ...fireChain, iconUrl: "/5ire.png" }, /* hardhat */],
     [
         alchemyProvider({ apiKey: process.env.ALCHEMY_ID ?? "" }),
         publicProvider()

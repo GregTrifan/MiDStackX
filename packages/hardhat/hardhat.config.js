@@ -101,6 +101,13 @@ module.exports = {
         mnemonic: mnemonic()
       }
     },
+    mantleTestnet: {
+      chainId: 5001,
+      url: "https://rpc.testnet.mantle.xyz/",
+      accounts: {
+        mnemonic: mnemonic()
+      }
+    },
     polygon: {
       url: "https://polygon-rpc.com",
       accounts: {
